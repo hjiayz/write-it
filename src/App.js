@@ -211,7 +211,9 @@ let Project = fs => {
         });
         return sha;
       })()
-        .then(res => {})
+        .then(res => {
+          this.setState({value:{}})
+        })
         .catch(_ => null);
     };
     render() {
