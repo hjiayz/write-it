@@ -143,6 +143,7 @@ let Project = fs => {
     buttonColor = () => {
       let value = this.state.value;
       let schema = this.state.schema;
+      if (Object.keys(value).length === 0) return "is-static";
       for (let field of schema) {
         let field_value = value[field[0]];
         if (field.indexOf(field_value, 1) === -1) return "is-warning";
@@ -212,7 +213,7 @@ let Project = fs => {
         return sha;
       })()
         .then(res => {
-          this.setState({value:{}})
+          this.setState({ value: {} });
         })
         .catch(_ => null);
     };
