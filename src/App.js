@@ -22,7 +22,7 @@ let Home = fs => {
         <aside className="menu">
           <ul className="menu-list">
             <li>
-              <Link to={"/new"}>新项目</Link>
+              <Link to={`${root}/new`}>新项目</Link>
             </li>
           </ul>
           <p className="menu-label">项目列表</p>
@@ -30,7 +30,7 @@ let Home = fs => {
             {(this.state.files || []).map(filename => {
               return (
                 <li key={filename}>
-                  <Link to={`/project/${filename}`}>{filename}</Link>
+                  <Link to={`${root}/project/${filename}`}>{filename}</Link>
                 </li>
               );
             })}
@@ -63,7 +63,7 @@ const NewProject = fs => {
               this.setState({ help: err, Loading: false });
             } else {
               git.init({ fs: fs, dir: `/${name}/` }).then(() => {
-                this.props.history.push(`/options/${name}`, {});
+                this.props.history.push(`${root}/options/${name}`, {});
               });
             }
           });
@@ -93,7 +93,7 @@ const NewProject = fs => {
                 onClick={this.onSubmit}>
                 确认
               </button>
-              <Link className="button" to="/">
+              <Link className="button" to={`${root}/`}>
                 返回主页
               </Link>
             </div>
@@ -107,7 +107,7 @@ let TabBar = ({ kind, id }) => (
   <div className="tabs">
     <ul>
       <li>
-        <Link to="/">主页</Link>
+        <Link to={`${root}/`}>主页</Link>
       </li>
       {["project", "options", "view"].map(v => {
         let labels = {
@@ -117,7 +117,7 @@ let TabBar = ({ kind, id }) => (
         };
         return (
           <li key={v} className={kind === v ? "is-active" : ""}>
-            <Link to={`/${v}/${id}`}>{labels[v]}</Link>
+            <Link to={`${root}/${v}/${id}`}>{labels[v]}</Link>
           </li>
         );
       })}
