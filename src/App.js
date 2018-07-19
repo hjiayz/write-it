@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
 import "bulma/css/bulma.css";
 import yaml from "js-yaml";
+let root = process.env.PUBLIC_URL;
 let BrowserFS = window.BrowserFS;
 let git = window.git;
 let Home = fs => {
@@ -798,11 +799,11 @@ class App extends Component {
       <div className="main">
         <Router>
           <div>
-            <Route exact path="/" component={Home(this.state.fs)} />
-            <Route path="/new" component={NewProject(this.state.fs)} />
-            <Route path="/project/:id" component={Project(this.state.fs)} />
-            <Route path="/options/:id" component={Options(this.state.fs)} />
-            <Route path="/View/:id" component={View(this.state.fs)} />
+            <Route exact path={root + "/"} component={Home(this.state.fs)} />
+            <Route path={root + "/new"} component={NewProject(this.state.fs)} />
+            <Route path={root + "/project/:id"} component={Project(this.state.fs)} />
+            <Route path={root + "/options/:id"} component={Options(this.state.fs)} />
+            <Route path={root + "/View/:id"} component={View(this.state.fs)} />
           </div>
         </Router>
       </div>
