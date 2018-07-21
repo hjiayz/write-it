@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
 import "bulma/css/bulma.css";
 import yaml from "js-yaml";
-let root = process.env.PUBLIC_URL;
+let root = "";
 let BrowserFS = window.BrowserFS;
 let git = window.git;
 let Home = fs => {
